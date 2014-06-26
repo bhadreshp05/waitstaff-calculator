@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="waitstaffApp">
+<head>
+	<meta charset="utf-8">
+	<title>Waitstaff Calculator</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arvo:400,700">
+	<link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+<header class="container">
+	<h1>Waitstaff <span class="glyphicon glyphicon-cutlery"></span> Calculator</h1>
+</header>
+
+	<div class="container" ng-controller="wsCtrl">
+		<div class="row">
+			<div class="col-sm-6 col-md-offset-1 col-md-5">
+				<div class="accent green-accent clearfix">
+				<h2>Meal Details</h2>
+					<form name="detailsForm" ng-submit="submit()">
+						<div class="row input-row">
+							<label for="price" class="col-xs-4">Price</label>
+							<div class="col-xs-8">
+								<input type="number" step="any" id="price" name="price" ng-model="data.price" required>								
+							</div>
+						</div>
+						<div class="row input-row">
+							<label for="price" class="col-xs-4">Tax Rate</label>
+							<div class="col-xs-8">
+								<input type="number" step="any" id="price" name="price" ng-model="data.tax" required>								
+							</div>
+						</div>
+						<div class="row input-row">
+							<label for="price" class="col-xs-4">Tip %</label>
+							<div class="col-xs-8">
+								<input type="number" step="any" id="price" name="price" ng-model="data.tip" required>								
+							</div>
+						</div>
+						<div class="form-actions">
+							<button class="btn btn-success pull-right">Submit</button>
+							<button type="reset" ng-click="clear()" class="btn btn-default pull-right">Clear</button>
+						</div>
+
+					</form>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-5">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="accent orange-accent clearfix">
+							<h2>Customer Charges</h2>
+							<div class="outputs row">
+								<span class="col-xs-6">Subtotal</span>
+								<span class="col-xs-6">{{data.charge.subTotal | currency}}</span>
+								<span class="col-xs-6">Tip</span>
+								<span class="col-xs-6">{{data.charge.tipInDollars | currency}}</span>
+								<span class="col-xs-6">Total</span>
+								<span class="col-xs-6">{{data.charge.total | currency}}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="accent blue-accent clearfix">
+							<h2>Earnings Info</h2>
+							<div class="outputs row">
+								<span class="col-xs-6">Tip Total</span>
+								<span class="col-xs-6">{{data.earnings.tipTotal | currency}}</span>
+								<span class="col-xs-6">Meal Count</span>
+								<span class="col-xs-6">{{data.earnings.mealCount}}</span>
+								<span class="col-xs-6">Avg. Tip/Meal</span>
+								<span class="col-xs-6">{{data.earnings.avgTip | currency}}</span>
+							</div>
+							<div class="row form-actions">
+								<button ng-click="reset()" class="btn btn-default pull-right">Reset</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/controllers/wsController.js"></script>
+</body>
+</html>

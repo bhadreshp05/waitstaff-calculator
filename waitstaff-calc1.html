@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" ng-app="waitstaff">
+<head>
+	<meta charset="UTF-8">
+	<title>Waitstaff calculator</title>
+	<link rel="stylesheet" href="waitstaff.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+	<script src="app/waitstaff.js"></script>
+	<script src="app/controllers/charges.js"></script>
+	<script src="app/controllers/earnings.js"></script>
+	<script src="app/controllers/form.js"></script>
+	<script src="app/controllers/reset.js"></script>
+</head>
+<body>
+
+
+	<header>
+		<h1>Waitstaff calculator</h1>
+	</header>
+
+
+	<main>
+		<section id="form" ng-controller="formController">
+			<h2>Enter the meal details</h2>
+			<form ng-submit="calculateMealCharges()">
+				<table>
+					<tbody>
+						<tr>
+							<th><label for="meal-price">Base meal price:</label></th>
+							<td class="units" id="meal-price-units">$</td>
+							<td><input  id="meal-price" aria-describedby="meal-price-units" type="number" required min="0" step="0.01" ng-model="data.mealPrice"></td>
+						</tr>
+						<tr>
+							<th><label for="tax-rate">Tax rate:</label></th>
+							<td class="units" id="tax-rate-units">%</td>
+							<td><input  id="tax-rate" aria-describedby="tax-rate-units" type="number" required min="0" step="0.01" ng-model="data.taxRate"></td>
+						</tr>
+						<tr>
+							<th><label for="tip-percent">Tip percentage:</label></th>
+							<td class="units" id="tip-percent-units">%</td>
+							<td><input  id="tip-percent" aria-describedby="tip-percent-units" type="number" required min="0" step="0.01" ng-model="data.tipPercentage"></td>
+						</tr>
+					</tbody>
+				</table>
+				<footer>
+					<input type="submit" value="Submit">
+					<input type="reset" value="Cancel">
+				</footer>
+			</form>
+		</section>
+		
+
+		<section id="charges" ng-controller="chargesController">
+			<h2>Customer charges</h2>
+			<table>
+				<tbody>
+					<tr>
+						<th>Subtotal</th>
+						<td>{{ data.subtotal | currency : $ }}</td>
+					</tr>
+					<tr>
+						<th>Tip</th>
+						<td>{{ data.tip | currency : $ }}</td>
+					</tr>	
+				</tbody>
+				<tfoot>
+					<tr>
+						<th>Total</th>
+						<td>{{ data.total | currency : $ }}</td>
+					</tr>
+				</tfoot>
+			</table>
+		</section>
+
+
+		<section id="earnings" ng-controller="earningsController">
+			<h2>My earnings info</h2>
+			<table>
+				<tbody>
+					<tr>
+						<th>Tip total</th>
+						<td>{{ data.tip.total | currency : $ }}</td>
+					</tr>
+					<tr>
+						<th>Meal count</th>
+						<td>{{ data.mealCount }}</td>
+					</tr>
+					<tr>
+						<th>Average tip per meal</th>
+						<td>{{ data.tip.average | currency : $ }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</main>
+
+
+	<footer ng-controller="resetController">
+		<button ng-click="reset()">Reset</button>
+	</footer>
+
+
+</body>
+</html>

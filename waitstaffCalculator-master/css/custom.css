@@ -1,0 +1,70 @@
+/* BASE RULES */
+body {
+	background: #EEE url('../images/noise.png');
+	font-family: 'Arvo', serif;
+}
+
+/* HEADINGS */
+h1 {
+	font-size: 3rem;
+	margin: 5rem 0;
+	text-align: center;
+}
+h2 {
+	color: #252525;
+	margin: 0 0 2.5rem;
+}
+.glyphicon {
+	display: inline-block;
+	margin: 0 2.5rem;
+}
+
+/* CONTENT */
+.accent {
+	background: #FFF;
+	border-top-width: 0.5rem;
+	border-top-style: solid;
+	color: #757575;
+	margin-bottom: 3rem;
+	padding: 2.5rem;
+	-webkit-border-radius: 0.5rem;
+					 border-radius: 0.5rem;
+	-webkit-box-shadow: 0.5rem 0.5rem 0.5rem #BBB;
+		 -moz-box-shadow: 0.5rem 0.5rem 0.5rem #BBB;
+					box-shadow: 0.5rem 0.5rem 0.5rem #BBB;
+}
+.green-accent {
+	border-top-color: #3FC380;
+}
+.orange-accent {
+	border-top-color: #EB9532;
+}
+.blue-accent {
+	border-top-color: #19B5FE;
+}
+.outputs span:nth-child(odd) {
+	text-align: right;
+}
+
+/* FORM */
+label {
+	text-align: right;
+}
+input {
+	border: 1px solid #BBB;
+	outline: none;
+	padding: 0.75rem 1rem;
+	width: 100%;
+	-webkit-appearance:none;
+}
+button:not(:first-of-type) {
+	margin-right: 0.5rem; 
+}
+.input-row {
+	margin-bottom: 1rem;
+}
+.form-actions {
+	border-top: 0.1rem dotted #BBB; 
+	margin-top: 3rem;
+	padding-top: 1.5rem;
+}
